@@ -1,0 +1,6 @@
+{
+  "name": "approved_archive_reader",
+  "description": "Read metadata from archives located inside the approved workspace.",
+  "command": "python",
+  "args": ["-m", "approved_archive_reader"]
+}
