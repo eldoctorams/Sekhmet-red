@@ -1,14 +1,16 @@
 # Roadmap
 
-## Phase 0 — Specification
-- Define threat taxonomy, score model and evidence schema.
-- Publish safe vulnerable MCP fixtures and expected outcomes.
-- Define reproducibility and false-positive requirements.
+## Phase 0 — Specification — complete
+- [x] Define threat taxonomy, score model and evidence schema.
+- [x] Publish safe vulnerable MCP fixtures and expected outcomes.
+- [x] Define reproducibility and false-positive requirements.
 
-## Phase 1 — Alpha CLI
-- Python CLI with stdio target support.
-- Static manifest checks and five runtime attack cases.
-- JSON report, SARIF export and GitHub Actions example.
+## Phase 1 — Alpha CLI — active
+- [x] Dependency-free offline Python scanning core.
+- [x] Static source, manifest and tool-metadata checks.
+- [x] JSON report, SARIF export and GitHub Actions example.
+- [x] Baseline comparison and evidence fingerprints.
+- [ ] Authorized stdio runtime adapter and synthetic attack harness.
 
 ## Phase 2 — Benchmark
 - HTTP/SSE transports, signed corpus releases and regression baselines.
