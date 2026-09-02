@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SEKHMET RED — evidence-first MCP and AI agent security command center.">
+  <title>SEKHMET RED // Agent Security Command</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div><div class="scanline"></div>
+  <header>
+    <a class="brand" href="#"><img src="assets/sekhmet-mark.svg" alt=""><span><b>SEKHMET <i>RED</i></b><small>AGENT SECURITY COMMAND</small></span></a>
+    <nav><button class="active" data-view="overview">OVERVIEW</button><button data-view="findings">FINDINGS</button><button data-view="evidence">EVIDENCE</button></nav>
+    <div class="status"><span></span> ENGINE ONLINE</div>
+  </header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">AUTHORIZED DEFENSIVE OPERATIONS // SR-01</p><h1>TRUST NOTHING.<br><em>VERIFY EVERY TOOL.</em></h1><p>Evidence-first security scanning and adversarial benchmarking for MCP servers, agent tools, prompts, resources and supply chains.</p></div>
+      <div class="seal"><img src="assets/sekhmet-mark.svg" alt="SEKHMET RED seal"><span>GUARDIAN OF THE AGENTIC GATE</span></div>
+    </section>
+    <section class="command-grid">
+      <aside>
+        <div class="panel-title">SCAN CONTROL <span>LOCAL</span></div>
+        <label>Target profile<select id="profile"><option>Safe demonstration server</option><option>Vulnerable training server</option></select></label>
+        <label>Engines</label><div class="engines"><button class="on">STATIC</button><button class="on">MANIFEST</button><button class="on">RUG PULL</button><button>RUNTIME</button></div>
+        <button id="scan" class="execute"><span>▶</span> INITIATE SCAN</button>
+        <p class="notice">Demonstration only. No external target is contacted by this interface.</p>
+      </aside>
+      <div class="center">
+        <div class="metrics"><article><small>TRUST SCORE</small><strong id="score">94</strong><span>/100</span></article><article><small>VERDICT</small><strong id="verdict" class="pass">PASS</strong></article><article><small>RULES ARMED</small><strong>08</strong></article><article><small>EVIDENCE HASH</small><strong>SHA-256</strong></article></div>
+        <div class="radar-panel"><div class="panel-title">THREAT CONSTELLATION <span>LIVE MODEL</span></div><div class="radar"><div class="rings"></div><div class="sweep"></div><span class="node n1">PROMPT</span><span class="node n2">TOOLS</span><span class="node n3">SECRETS</span><span class="node n4">SUPPLY</span><div class="glyph">𓃭</div></div></div>
+      </div>
+      <aside class="feed"><div class="panel-title">INTELLIGENCE FEED <span id="count">03 EVENTS</span></div><div id="events"></div></aside>
+    </section>
+    <section class="findings"><div class="panel-title">EVIDENCE-BACKED FINDINGS <span>DETERMINISTIC</span></div><div class="finding-head"><span>SEVERITY</span><span>RULE / OBSERVATION</span><span>CONFIDENCE</span><span>STATE</span></div><div id="rows"></div></section>
+  </main>
+  <footer><span>SEKHMET RED v0.1.0</span><span>DEFENSIVE RESEARCH • AUTHORIZED TESTING ONLY</span><span>DR. AHMED MOHAMED EL SAYED</span></footer>
+  <script src="app.js"></script>
+</body></html>
