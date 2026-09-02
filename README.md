@@ -1,56 +1,89 @@
-# MCP RedFlag
+<div align="center">
 
-> A reproducible red-team benchmark for MCP servers and Agent Skills.
+<img src="web/assets/sekhmet-mark.svg" width="150" alt="SEKHMET RED">
 
-[![Status: Design](https://img.shields.io/badge/status-design--phase-ef4444)](#project-status)
-[![License: MIT](https://img.shields.io/badge/license-MIT-0ea5e9)](LICENSE)
-[![Security](https://img.shields.io/badge/security-responsible%20use-22c55e)](SECURITY.md)
+# SEKHMET RED
 
-MCP RedFlag is being designed as an adversarial lab—not merely another static scanner. It will measure how agent systems behave when tools, manifests, resources and supply-chain components become hostile, then produce evidence-backed, CI-friendly findings.
+### Trust nothing. Verify every tool.
 
-## Why this matters
+Evidence-first security scanning and adversarial benchmarking for MCP servers, AI agent tools, prompts, resources and supply chains.
 
-Agent ecosystems introduce new trust boundaries: tool descriptions can contain hidden instructions, schemas can change, permissions can be excessive, and secrets can leak through tool calls. Teams need repeatable tests and comparable scores before deployment.
+[![CI](https://github.com/eldoctorams/sekhmet-red/actions/workflows/ci.yml/badge.svg)](https://github.com/eldoctorams/sekhmet-red/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-d7aa55)](pyproject.toml)
+[![License](https://img.shields.io/badge/License-MIT-d92945)](LICENSE)
+[![Defensive use](https://img.shields.io/badge/use-authorized%20defense-62d6a4)](SECURITY.md)
 
-## Planned capabilities
+</div>
 
-- Curated attack cases for prompt injection, tool poisoning, rug pulls, secret leakage and over-permission.
-- Isolated test harnesses for stdio, HTTP and SSE transports.
-- Deterministic evidence bundles with inputs, outputs, hashes and timestamps.
-- Severity scoring mapped to OWASP guidance and export to JSON/SARIF.
-- CI gates, regression baselines and human-readable reports.
-- A public benchmark corpus with safe mock targets—never real victim systems.
+## The agentic gate has a guardian
 
-## Differentiator
+MCP servers and AI agent tools create a powerful new trust boundary. A polished tool description can conceal instruction overrides, excessive privileges, unsafe execution, secret exfiltration or a supply-chain change introduced after approval. **SEKHMET RED** turns those risks into reproducible, evidence-backed findings before deployment.
 
-Most projects focus on detection. MCP RedFlag will combine a **benchmark specification**, **safe adversarial fixtures**, **runtime behavior measurement** and **reproducible evidence**. The goal is to answer: “Did the agent actually change its behavior under attack, and can another researcher reproduce the result?”
+The first alpha contains a working offline scanner, deterministic fingerprints, baseline comparison for rug-pull detection, JSON and SARIF output, safe fixtures, CI gates and an interactive command interface.
 
-## Project status
+## What works today
 
-**Design phase.** The repository currently defines scope, safety boundaries and the MVP. No production-ready scanner is claimed yet.
+- Static inspection of source, manifests, prompts, resources and tool metadata.
+- Detection rules for prompt injection, secret exfiltration, hardcoded credentials, dynamic execution, broad filesystem access, unrestricted egress, floating packages and unsafe deserialization.
+- Stable SHA-256 target digests and finding fingerprints.
+- Baseline comparison that identifies new, resolved and unchanged findings.
+- CI-friendly exit codes with configurable severity threshold.
+- JSON evidence bundles and SARIF 2.1.0 for GitHub code scanning.
+- Safe vulnerable and secure fixtures with no real target interaction.
+- Cinematic local/static command interface in [`web/`](web/).
 
-## First release target
+## Quick start
 
 ```bash
-mcp-redflag run ./examples/vulnerable-server
-mcp-redflag report --format sarif
+git clone https://github.com/eldoctorams/sekhmet-red.git
+cd sekhmet-red
+python -m pip install -e .
+
+sekhmet scan ./tests/fixtures/secure
+sekhmet scan ./your-mcp-server --json report.json --sarif report.sarif
 ```
 
-The first public alpha will include a small safe corpus, a Python CLI, JSON evidence schema and GitHub Actions example.
+Fail CI on a selected threshold:
 
-## Documentation
+```bash
+sekhmet scan . --fail-on high
+```
 
-- [Roadmap](ROADMAP.md)
-- [Reference projects and gap analysis](docs/REFERENCE_PROJECTS.md)
-- [Contributing](CONTRIBUTING.md)
-- [Security and responsible use](SECURITY.md)
+Detect security drift or a potential rug pull:
+
+```bash
+sekhmet scan ./server --json approved-baseline.json --fail-on never
+sekhmet scan ./server --baseline approved-baseline.json
+```
+
+## Architecture
+
+```text
+Target → File inventory → Deterministic rules → Evidence fingerprints
+                                      ├── JSON evidence bundle
+                                      ├── SARIF security report
+                                      └── Baseline drift verdict
+```
+
+The alpha intentionally keeps its core engine dependency-free. No scanned content is sent to an external LLM or API. Optional runtime adapters and additional analyzers will remain isolated behind explicit operator consent.
+
+## Research lineage
+
+SEKHMET RED is an original implementation informed by strong open-source work:
+
+- [Cisco AI Defense MCP Scanner](https://github.com/cisco-ai-defense/mcp-scanner) — multi-engine MCP inspection, Apache-2.0.
+- [Tencent AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard) — broad AI security coverage and operational presentation, Apache-2.0.
+- [AgentDojo](https://github.com/ethz-spylab/agentdojo) — dynamic prompt-injection evaluation methodology, MIT.
+
+No source code from these projects is vendored in this alpha. See [reference analysis](docs/REFERENCE_PROJECTS.md).
+
+## Responsible use
+
+SEKHMET RED is for defensive research and systems you own or are explicitly authorized to test. The included fixtures are synthetic. Do not aim future runtime harnesses at third-party infrastructure without written authorization. See [SECURITY.md](SECURITY.md).
 
 ## Author
 
-**Dr. Ahmed Mohamed El Sayed** — OSINT, digital forensics, cybercrime investigation and AI-powered investigation systems.
+**Dr. Ahmed Mohamed El Sayed**<br>
+OSINT · Digital Forensics · Cybercrime Investigation · Financial Crime Intelligence · AI-Powered Investigation Systems
 
 [Website](https://drahmedelsayed.com/) · [LinkedIn](https://www.linkedin.com/in/eldoctorams/) · [GitHub](https://github.com/eldoctorams)
-
-## License
-
-MIT. Defensive research and authorized testing only.
