@@ -1,6 +1,6 @@
 # Security and Responsible Use
 
-This project is under active design and is **not production ready**.
+SEKHMET RED is an **alpha defensive research tool**. Deterministic findings still require human review before operational decisions.
 
 ## Reporting a vulnerability
 
