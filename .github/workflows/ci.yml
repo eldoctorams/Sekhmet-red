@@ -1,0 +1,30 @@
+name: SEKHMET RED CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e . pytest
+      - run: python -m pytest -q
+      - name: Scan safe fixture
+        run: sekhmet scan tests/fixtures/secure --json sekhmet-report.json --sarif sekhmet-report.sarif
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sekhmet-evidence
+          path: |
+            sekhmet-report.json
+            sekhmet-report.sarif
+
