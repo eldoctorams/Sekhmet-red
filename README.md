@@ -4,6 +4,8 @@
 
 # SEKHMET RED
 
+![SEKHMET RED live interface](docs/assets/sekhmet-red-live.jpg)
+
 ### Trust nothing. Verify every tool.
 
 Evidence-first security scanning and adversarial benchmarking for MCP servers, AI agent tools, prompts, resources and supply chains.
