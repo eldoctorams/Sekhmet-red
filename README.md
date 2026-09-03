@@ -1,3 +1,5 @@
+[Launch the live SEKHMET RED interface](https://eldoctorams.github.io/Sekhmet-red/)
+
 <div align="center">
 
 <img src="web/assets/sekhmet-mark.svg" width="150" alt="SEKHMET RED">
